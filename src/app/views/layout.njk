@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        {% block head %}
+            <title>Gym Manager</title>
+        {% endblock %}
+
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <header>
+            <div class="links">
+                <a href="/instructors">Instructors</a>
+                <a href="/members">Members</a>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer> Gym Manager - Feito por <a href="https://www.linkedin.com/in/miguelslima1986/">Miguel Lima</a></footer>
+        <script src="/scripts.js"></script>
+    </body>
+</html>
