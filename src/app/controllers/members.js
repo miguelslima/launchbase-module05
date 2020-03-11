@@ -12,7 +12,11 @@ module.exports = {
 
   create(req, res) {
 
-    return res.render('members/create');
+    Member.instructorsSelectOptions(function(options){
+      
+      return res.render('members/create', { instructorOptions: options});
+    })
+
   },
 
   post(req, res) {
@@ -41,6 +45,7 @@ module.exports = {
       return res.render('members/show', { member });
     })
   },
+
   edit(req, res) {
     Member.find(req.params.id, function(member){
       if(!member) {
@@ -49,9 +54,13 @@ module.exports = {
 
       member.birth = date(member.birth).iso;
 
-      return res.render('members/edit', { member });
+      Member.instructorsSelectOptions(function(options){
+      
+        return res.render('members/edit', { member, instructorOptions: options});
+      })
     })
   },
+
   put(req, res) {
     
     const keys = Object.keys(req.body);
